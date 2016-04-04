@@ -1,0 +1,11 @@
+{
+  "name": "gas-mocks",
+  "version": "1.0.0",
+  "description": "gas mock objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mikhail Zagorny",
+  "license": "ISC"
+}

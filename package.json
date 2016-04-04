@@ -1,0 +1,17 @@
+{
+  "name": "gas-ground",
+  "version": "0.1.0",
+  "description": "allows run and test your google app scripts locally",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gas",
+    "googleappscript",
+    "require",
+    "module"
+  ],
+  "author": "Mikhail Zagorny",
+  "license": "ISC"
+}
