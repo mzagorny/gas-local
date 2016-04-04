@@ -4,7 +4,7 @@ var path = require('path');
 
 var util = require('util');
 //gas_module instead of gas-module, because in latter case debug also shows log from node's core module
-var debug = util.debuglog('gas_module');
+var debug = util.debuglog('gas-ground:module');
 
 function gasrequire(libPath, globalObject) {
   debug('loading from folder: %s',libPath)
@@ -28,11 +28,4 @@ function gasrequire(libPath, globalObject) {
   return ctx;
 }
 
-
-module.exports = {
-  require:gasrequire
-};
-
-
-
-
+module.exports=gasrequire;
