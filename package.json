@@ -11,7 +11,10 @@
     "googleappscript",
     "require",
     "module"
-  ],
+  ],  
   "author": "Mikhail Zagorny",
-  "license": "ISC"
+  "license": "ISC",
+   "dependencies": {
+    "date-format": "0.0.2"
+  }
 }
