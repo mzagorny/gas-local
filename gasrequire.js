@@ -4,9 +4,15 @@ var path = require('path');
 
 var util = require('util');
 //gas_module instead of gas-module, because in latter case debug also shows log from node's core module
-var debug = util.debuglog('gas-ground:module');
+var debug = util.debuglog('gas-local:require');
 
 function gasrequire(libPath, globalObject) {
+  if (!globalObject){
+    debug('no globalObject passed. use default mock');
+    var mocks=require('./gmocks/index');
+    globalObject=mocks.globalMock;
+  }
+  
   debug('loading from folder: %s',libPath)
   var files = fs.readdirSync(libPath);
   var gsFiles = files.filter(function(f) {
