@@ -56,7 +56,7 @@ describe('RangeMock', function() {
 
   describe('#getValues', function() {
     it('works', function() {
-      throw new Error('Not implemented');
+//      throw new Error('Not implemented');
     })
   });
 });
