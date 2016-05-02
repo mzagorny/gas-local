@@ -24,6 +24,11 @@ RangeMock.prototype.getColumn = function() {
   return this.column;
 }
 
+RangeMock.prototype.getLastColumn = function() {
+  return this.column+this.numColumns-1;
+}
+
+
 RangeMock.prototype.getValues = function() {
   var sRow = this.row - 1;
   var colSliceBegin = this.column - 1;
