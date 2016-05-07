@@ -7,6 +7,11 @@ function RangeMock(sheetValues, row, column, numRows, numColumns) {
   this.numColumns = numColumns;
 }
 
+RangeMock.prototype.getSheet = function() {
+ throw new Error("Not implemented");
+}
+
+
 RangeMock.prototype.getRow = function() {
   return this.row;
 }
