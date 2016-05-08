@@ -9,8 +9,7 @@ var debug = util.debuglog('gas-local:require');
 function gasrequire(libPath, globalObject) {
   if (!globalObject){
     debug('no globalObject passed. use default mock');
-    var mocks=require('./gmocks/index');
-    globalObject=mocks.globalMock;
+    globalObject=require('./globalMock');    
   }
   
   debug('loading from folder: %s',libPath)
