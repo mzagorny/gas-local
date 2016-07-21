@@ -23,5 +23,3 @@ How to use
 ==
 - install tool [gas tools](https://www.npmjs.com/package/node-google-apps-script)
 - configure your gas-script to develop locally using instruction from page above
-
-to be continued...

@@ -1,7 +1,7 @@
 {
-  "name": "gas-ground",
+  "name": "gas-local",
   "version": "0.1.0",
-  "description": "allows run and test your google app scripts locally",
+  "description": "allows to run and test your google app scripts locally",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,10 +11,11 @@
     "googleappscript",
     "require",
     "module"
-  ],  
+  ],
   "author": "Mikhail Zagorny",
   "license": "ISC",
-   "dependencies": {
-    "date-format": "0.0.2"
+  "dependencies": {
+    "date-format": "0.0.2",
+    "mocha": "^2.5.3"
   }
 }
