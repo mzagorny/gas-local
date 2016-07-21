@@ -3,7 +3,6 @@ var vm = require('vm');
 var path = require('path');
 
 var util = require('util');
-//gas_module instead of gas-module, because in latter case debug also shows log from node's core module
 var debug = util.debuglog('gas-local:require');
 
 function gasrequire(libPath, globalObject) {
