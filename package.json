@@ -13,7 +13,7 @@
     "module"
   ],
   "author": "Mikhail Zagorny",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "date-format": "0.0.2",
     "mocha": "^2.5.3"
