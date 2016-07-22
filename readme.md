@@ -4,15 +4,15 @@ Allows to run and test google app scripts (gas) in local node.js environment.
 
 # Usage
 
-- download your gas library to your project folder via [gas tools](https://www.npmjs.com/package/node-google-apps-script). 
-Your google scripts will appear in 'src' subfolder   
+- Download your standalone apps script project via [gas tools](https://www.npmjs.com/package/node-google-apps-script). 
+Content of your project will appear in 'src' subfolder   
 
-- load your library in code this way
+- Load your library in code this way
 ```javascript
 var gas = require('gas-local');
 //load your google scripts from src subfolder as module   
 var glib=gas.require('./src');
-//use it as usual 
+//call some function from your module 
 glib.somefunction();
 ```
 
