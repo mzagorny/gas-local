@@ -2,10 +2,10 @@
 
 
 var assert = require('assert');
-var gas = require('./index.js');
+var gas = require('.././index.js');
 
 describe('gasrequire', function () {
-   var m = gas.require('./testmodule');
+   var m = gas.require('./test/testmodule');
 
    it('public variables and function is visible ', function () {
       assert(m.hasOwnProperty('x'));

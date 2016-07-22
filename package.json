@@ -4,7 +4,7 @@
   "description": "allows to run and test your google app scripts locally",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter spec"
   },
   "keywords": [
     "gas",
