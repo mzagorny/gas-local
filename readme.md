@@ -1,6 +1,6 @@
 # Description
 
-Helps to run and test google app scripts (gas) in local node.js environment.
+Allows to run and test google app scripts (gas) in local node.js environment.
 
 # Usage
 
