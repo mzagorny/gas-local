@@ -13,24 +13,24 @@ var debug = util.debuglog('gas-local:require');
  * @returns module
  */
 function gasrequire(folderPath, globalObject) {
-  if (!globalObject){
+  if (!globalObject) {
     debug('no globalObject passed. use default mock');
-    globalObject=require('./globalMock');    
+    globalObject = require('./globalMock');
   }
-  
-  debug('loading from folder: %s',folderPath)
+
+  debug('loading from folder: %s', folderPath)
   var files = fs.readdirSync(folderPath);
-  var gsFiles = files.filter(function(f) {
+  var gsFiles = files.filter(function (f) {
     var ext = path.extname(f);
     return ext == '.js';
   });
 
   var ctx = vm.createContext(globalObject);
- 
+
   for (var i = 0; i < gsFiles.length; i++) {
     var fname = gsFiles[i];
     var fpath = path.join(folderPath, fname);
-    debug('loading file: %s...',fpath);
+    debug('loading file: %s...', fpath);
 
     var code = fs.readFileSync(fpath);
     vm.runInContext(code, ctx, fpath);
@@ -39,4 +39,4 @@ function gasrequire(folderPath, globalObject) {
   return ctx;
 }
 
-module.exports=gasrequire;
+module.exports = gasrequire;
