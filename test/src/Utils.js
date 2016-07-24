@@ -1,9 +1,18 @@
+var Utils = {
+  /**
+   * Get the active user (email)
+   * NOTE: When first use then authorization window will appear
+   * @returns {String} email
+   */
+  GetActiveUser: function () {
+    var email = Session.getActiveUser().getEmail();
+    return email;
+  }
+}
+
 /**
- * Logs active user (email)
- * NOTE: When first use then authorization window will appear
- * @returns {String} email
+ * to run in cloud
  */
-function GetActiveUser() {
-  var email = Session.getActiveUser().getEmail();
-  return email;
+function _run_GetActiveUser() {
+  Logger.log(Utils.GetActiveUser());
 }

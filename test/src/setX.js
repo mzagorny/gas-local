@@ -11,6 +11,6 @@ function setX(v) {
 /**
   to run in cloud
 */
-function _tesSetXto10() {
+function _run_setXto10() {
   setX(10);
 }
