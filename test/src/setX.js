@@ -7,3 +7,10 @@ function setX(v) {
   x = v;
   Logger.log('x = %s now', v);
 }
+
+/**
+  to run in cloud
+*/
+function _tesSetXto10() {
+  setX(10);
+}
