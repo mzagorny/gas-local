@@ -1,8 +1,9 @@
 /**
  * Logs active user (email)
  * NOTE: When first use then authorization window will appear
+ * @returns {String} email
  */
-function LogActiveUser() {
+function GetActiveUser() {
   var email = Session.getActiveUser().getEmail();
-  Logger.log("email:%s", email);
+  return email;
 }
