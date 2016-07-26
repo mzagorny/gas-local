@@ -31,9 +31,29 @@ describe('library loading', function () {
 describe('default mock of services', function () {
   var m = gas.require('./test/src');
   it('Logger is mocked', function () {
+    //Contains call to Logger. if no exception then Logger is mocked as it should. test passes 
     m.Utils.logCurrentDateTime();
   })
 });
 
 describe('custom mock of services', function () {
+  //default mock object
+  var defMock = gas.globalMock;
+  //extend default mock object
+  var customMock = { MailApp: { getRemainingDailyQuota: function () { return 50; } }, __proto__: defMock };
+  //pass it to require
+  var m = gas.require('./test/src', customMock);
+
+
+  it('MailApp is mocked', function () {
+    //Contains call to MailApp. if no exception then MailApp is mocked as it should. 
+    var q = m.Utils.getRemainingEmailQuota();
+    //but assert returned value also for 100% sure :)
+    assert(q == 50);
+  })
+
+  it('Default Logger is mocked also', function () {
+    //Contains call to Logger. if no exception then Logger is mocked as it should. test passes 
+    m.Utils.logCurrentDateTime();
+  })
 });
