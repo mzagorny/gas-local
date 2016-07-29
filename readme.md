@@ -3,20 +3,40 @@
 Simple library for execute and test your google app scripts projects locally in node.js 
 Companion for [gas tools](https://www.npmjs.com/package/node-google-apps-script)
 
-# Workflow
+# How to use
 
-- Download your apps script project via [gas tools](https://www.npmjs.com/package/node-google-apps-script). 
+1. Download your apps script project via [gas tools](https://www.npmjs.com/package/node-google-apps-script). 
 Content of your project will appear in 'src' subfolder
-- "Require" your library as usual module in your tests
+1. "Require" your library as usual module in your tests
 ```javascript
 var gas = require('gas-local');
-//load your google script  from src subfolder as module   
-var glib=gas.require('./src');
+//load your downloaded google script library from src subfolder as normal module   
+var glib = gas.require('./src');
 //call some function from your app script library 
 glib.somefunction();
 ```
-- Develop and test your google app script project locally
-- Upload changes back to google drive via gas-tools. 
+3. Develop and test your google app script project locally
+1. Upload changes back to google drive via gas-tools. 
+
+# How to mock google services
+gas-local already mocks parts of Logger and Utilities by default (see globalmock-default.js).
+But you also can provide mocks for other google services for your tests this way:  
+
+```javascript
+var gas = require('gas-local');
+//pick default mock object
+var defMock = gas.globalMockDefault;
+//Mock MailApp by extending default mock object
+var customMock = { 
+    MailApp: { getRemainingDailyQuota: function () { return 50; } },
+     __proto__: defMock 
+  };
+//pass it to require
+var glib = gas.require('./src', customMock);
+
+//call some function from your app script library working with MailApp 
+glib.sendMails();
+```
 
 # Explanation
 
@@ -25,9 +45,13 @@ Google app script project normally consist of several js files which run in one 
 gas-local allows to use google app script project "as is" without any rewrite for node.js. All scripts from google app script project are loaded to separate single context and doesn't mix with global context.
 
 # Installation
+TODO
+```
+npm install gas-local
+```
+
 
 # Testing
-
 ```
 npm test
 ```

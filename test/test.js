@@ -44,7 +44,6 @@ describe('Custom mock of services', function () {
   //pass it to require
   var m = gas.require('./test/src', customMock);
 
-
   it('MailApp is mocked', function () {
     //Contains call to MailApp. if no exception then MailApp is mocked as it should. 
     var q = m.Utils.getRemainingEmailQuota();
