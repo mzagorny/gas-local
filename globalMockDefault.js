@@ -1,6 +1,9 @@
 var util = require('util');
 var formatDate = require('date-format');
 
+/**
+ * Default mock object for google services
+ */
 module.exports = {
   Logger: {
     log: function(obj) {

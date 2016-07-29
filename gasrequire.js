@@ -18,7 +18,7 @@ function gasrequire(folderPath, globalObject) {
     globalObject = require('./globalMock');
   }
 
-  debug('loading from folder: %s', folderPath)
+  debug('loading from folder: %s...', folderPath)
   var files = fs.readdirSync(folderPath);
   var gsFiles = files.filter(function (f) {
     var ext = path.extname(f);
