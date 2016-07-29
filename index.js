@@ -1,7 +1,7 @@
 
 module.exports = {
   require:require('./gasrequire'),
-  globalMock:require('./globalMock')
+  globalMock:require('./globalmock-default')
 };
 
 

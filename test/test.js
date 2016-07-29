@@ -4,7 +4,7 @@
 var assert = require('assert');
 var gas = require('.././index.js');
 
-describe('library loading', function () {
+describe('Library loading', function () {
   var m = gas.require('./test/src');
 
   it('content is not loaded to global', function () {
@@ -28,7 +28,7 @@ describe('library loading', function () {
   })
 });
 
-describe('default mock of services', function () {
+describe('Default mock of services', function () {
   var m = gas.require('./test/src');
   it('Logger is mocked', function () {
     //Contains call to Logger. if no exception then Logger is mocked as it should. test passes 
@@ -36,7 +36,7 @@ describe('default mock of services', function () {
   })
 });
 
-describe('custom mock of services', function () {
+describe('Custom mock of services', function () {
   //default mock object
   var defMock = gas.globalMock;
   //extend default mock object
