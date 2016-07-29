@@ -12,7 +12,7 @@ Content of your project will appear in 'src' subfolder
 var gas = require('gas-local');
 //load your google script  from src subfolder as module   
 var glib=gas.require('./src');
-//call some function from your module 
+//call some function from your app script library 
 glib.somefunction();
 ```
 - Develop and test your google app script project locally
@@ -22,7 +22,23 @@ glib.somefunction();
 
 Google app script project normally consist of several js files which run in one context in google cloud. All content of these files is public. This incompatible with node.js approach where module is strictly single file and content is private by default. You need to use module.exports construct to make something visible.
 
-gas-local allows to use google app script project as is without any rewrite for node.js. All scripts from google app script project are loaded to separate single context and doesn't mix with global context.   
+gas-local allows to use google app script project "as is" without any rewrite for node.js. All scripts from google app script project are loaded to separate single context and doesn't mix with global context.
+
+# Installation
+
+# Testing
+
+```
+npm test
+```
+
+Test files located in test folder. Tests build around [sample](https://script.google.com/d/1rbgTsrQ2tYUWtKsc6rwke2OMbs2ElmAhi86uf38YM_efLUIRU2MjWSFq/edit?usp=sharing) google app script module and ensure that this app script library is loaded correctly by gas-local.
+Sample library downloaded by gas-tools, but default download path has changed from src to test/src (in gapps.config.json).
+
+
+
+
+
 
 # Useful links
 
