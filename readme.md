@@ -20,7 +20,8 @@ glib.somefunction();
 
 # How to mock google services
 gas-local already mocks parts of Logger and Utilities by default (see globalmock-default.js).
-But you also can provide mocks for other google services for your tests this way:  
+But you also can provide mocks for other google services for your tests. 
+Below is example how to mock MailApp.getRemainingDailyQuota function  
 
 ```javascript
 var gas = require('gas-local');

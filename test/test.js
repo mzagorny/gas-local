@@ -38,7 +38,7 @@ describe('Default mock of services', function () {
 
 describe('Custom mock of services', function () {
   //default mock object
-  var defMock = gas.globalMock;
+  var defMock = gas.globalMockDefault;
   //extend default mock object
   var customMock = { MailApp: { getRemainingDailyQuota: function () { return 50; } }, __proto__: defMock };
   //pass it to require
