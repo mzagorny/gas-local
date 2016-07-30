@@ -1,22 +1,23 @@
 # Description
 
-Execute and test your google apps scripts projects locally in node.js runtime
+Execute and test your google apps scripts projects locally in node.js runtime.     
 Companion for [gas tools](https://www.npmjs.com/package/node-google-apps-script)
 
-# How to use
+# General workflow
 
-1. Download your apps script project via [gas tools](https://www.npmjs.com/package/node-google-apps-script). 
+- Download your apps script project via [gas tools](https://www.npmjs.com/package/node-google-apps-script). 
 //all .gs files of your project will appear as javascript file in 'src' subfolder
-1. "Require" your library as usual module in your local tests
+- "Require" your library as usual module in your local tests
 ```javascript
+//require gas-local itself
 var gas = require('gas-local');
 //require your downloaded google apps script library from src subfolder as normal module   
 var glib = gas.require('./src');
 //call some function from your app script library 
 glib.somefunction();
 ```
-3. Develop and test your google apps script project locally
-4. Upload changes back to google via gas-tools. 
+- Develop and test your google apps script project locally
+- Upload changes back to google via gas-tools. 
 
 # How to mock google services
 gas-local already mocks parts of Logger and Utilities by default (see globalmock-default.js).
@@ -48,7 +49,6 @@ All content of these files (functions and variable) is public. This incompatible
 gas-local allows to use google apps script project "as is" without any rewriting to use in node. All scripts from google apps script project are loaded to separate single context and doesn't mix with global context.
 
 # Installation
-TODO
 ```
 npm install gas-local --save
 ```
