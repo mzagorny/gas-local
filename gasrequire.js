@@ -15,10 +15,10 @@ var debug = util.debuglog('gas-local:require');
 function gasrequire(folderPath, globalObject) {
   if (!globalObject) {
     debug('no globalObject passed. use default mock');
-    globalObject = require('./globalMock');
+    globalObject = require('./globalmock-default');
   }
 
-  debug('loading from folder: %s', folderPath)
+  debug('loading from folder: %s...', folderPath)
   var files = fs.readdirSync(folderPath);
   var gsFiles = files.filter(function (f) {
     var ext = path.extname(f);
