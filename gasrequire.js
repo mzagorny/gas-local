@@ -8,8 +8,8 @@ var debug = util.debuglog('gas-local:require');
 /**
  * 
  * 
- * @param {String} path to folder with downloaded app scripts
- * @param {Object} global to pass to module. globalMock will be passed if not specified
+ * @param {string} folderPath to folder with downloaded app scripts
+ * @param {object} globalObject to pass to module. globalMock will be passed if not specified
  * @returns module
  */
 function gasrequire(folderPath, globalObject) {
@@ -38,5 +38,7 @@ function gasrequire(folderPath, globalObject) {
 
   return ctx;
 }
+
+
 
 module.exports = gasrequire;
