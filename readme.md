@@ -16,7 +16,7 @@ var glib = gas.require('./src');
 glib.somefunction();
 ```
 3. Develop and test your google apps script project locally
-1. Upload changes back to google via gas-tools. 
+4. Upload changes back to google via gas-tools. 
 
 # How to mock google services
 gas-local already mocks parts of Logger and Utilities by default (see globalmock-default.js).

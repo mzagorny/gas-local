@@ -6,15 +6,17 @@ var formatDate = require('date-format');
  */
 module.exports = {
   Logger: {
-    log: function(obj) {
-      console.log.apply(console, arguments);
-				}
+    enabled: true,
+    log: function (obj) {
+      if (this.enabled)
+        console.log.apply(console, arguments);
+		}
   },
   Utilities: {
-    formatString: function(format, etc) {
+    formatString: function (format, etc) {
       return util.format.apply(util, arguments);
 				},
-    formatDate: function(date, tz, format) {
+    formatDate: function (date, tz, format) {
       return formatDate(format, date);
 				}
   }

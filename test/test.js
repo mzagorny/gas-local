@@ -3,6 +3,8 @@
 
 var assert = require('assert');
 var gas = require('.././index.js');
+//disable log to console for clean test output
+gas.globalMockDefault.Logger.enabled = false;
 
 describe('Library loading', function () {
   var m = gas.require('./test/src');
@@ -30,7 +32,7 @@ describe('Library loading', function () {
 
 describe('Default mock of services', function () {
   var m = gas.require('./test/src');
-  it('Logger is mocked', function () {
+  it('logger is mocked', function () {
     //Contains call to Logger. if no exception then Logger is mocked as it should. test passes 
     m.Utils.logCurrentDateTime();
   })
@@ -44,14 +46,14 @@ describe('Custom mock of services', function () {
   //pass it to require
   var m = gas.require('./test/src', customMock);
 
-  it('MailApp is mocked', function () {
+  it('mock additional service - MailApp', function () {
     //Contains call to MailApp. if no exception then MailApp is mocked as it should. 
     var q = m.Utils.getRemainingEmailQuota();
     //but assert returned value also for 100% sure :)
     assert(q == 50);
   })
 
-  it('Default Logger is mocked also', function () {
+  it('default Logger is mocked also', function () {
     //Contains call to Logger. if no exception then Logger is mocked as it should. test passes 
     m.Utils.logCurrentDateTime();
   })
