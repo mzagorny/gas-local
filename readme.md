@@ -6,7 +6,7 @@ Companion for [gas tools](https://www.npmjs.com/package/node-google-apps-script)
 # Workflow
 
 - Download your apps script project via [gas tools](https://www.npmjs.com/package/node-google-apps-script). 
-//all .gs files of your project will appear as javascript file in 'src' subfolder
+//all .gs files of your project will appear as javascript files in 'src' subfolder
 - "Require" your library as usual module in your local tests via gas-local
 ```javascript
 //require gas-local itself
