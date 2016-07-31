@@ -1,7 +1,7 @@
 {
   "name": "gas-local",
   "version": "1.0.7",
-  "description": "Execute and test your google apps scripts projects locally in node.js runtime",
+  "description": "Execute and test your google apps script projects locally in node.js runtime",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec"
