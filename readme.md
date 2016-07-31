@@ -2,7 +2,7 @@
 
 [![NPM Version][npm-image]][npm-url]
 
-Execute and test your google apps scripts projects locally in node.js runtime.     
+Execute and test your [google apps script](https://developers.google.com/apps-script/) projects locally in node.js runtime.     
 Companion for [gas tools](https://www.npmjs.com/package/node-google-apps-script)
 
 # Workflow
