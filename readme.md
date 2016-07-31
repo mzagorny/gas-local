@@ -2,12 +2,13 @@
 
 [![NPM Version][npm-image]][npm-url]
 
-Execute and test your [google apps script](https://developers.google.com/apps-script/) projects locally in node.js runtime.     
-Companion for [gas tools](https://www.npmjs.com/package/node-google-apps-script)
+Execute and test your [google apps script](https://developers.google.com/apps-script/) projects locally in node.js runtime.
+
+Companion to [node-google-apps-script](https://www.npmjs.com/package/node-google-apps-script) (gapps)
 
 # Workflow
 
-- Download your apps script project via [gas tools](https://www.npmjs.com/package/node-google-apps-script). 
+- Download your [google apps script](https://developers.google.com/apps-script/) project using [gapps](https://www.npmjs.com/package/node-google-apps-script) utility. 
 //all .gs files of your project will appear as javascript files in 'src' subfolder
 - "Require" your library as usual module in your local tests via gas-local
 ```javascript
@@ -19,7 +20,7 @@ var glib = gas.require('./src');
 glib.somefunction();
 ```
 - Develop and test your google apps script project locally
-- Upload changes back to google via gas-tools. 
+- Upload changes back to google using gapps. 
 
 # How to mock google services
 gas-local already mocks parts of Logger and Utilities by default (see globalmock-default.js).
@@ -55,7 +56,7 @@ gas-local allows to use google apps script project "as is" without any rewriting
 > if node debugger hangs on start, remove all breakpoints within google library and restart debugger. 
 > Set library breakpoints at run-time after step-in to library.        
 
-This behavior actually is similar to google cloud debugger, where library breakpoints work only after debugger step-in.  
+This behavior actually is similar to google cloud debugger, where library breakpoints work only after debugger's step-in.  
 
 My environment: Windows 7/10 x64, vscode.   
 Don't know regarding other combinations.
@@ -71,11 +72,11 @@ npm test
 ```
 
 Test files located in test folder. Tests build around [sample](https://script.google.com/d/1rbgTsrQ2tYUWtKsc6rwke2OMbs2ElmAhi86uf38YM_efLUIRU2MjWSFq/edit?usp=sharing) google app script module and ensure that this app script library is loaded correctly by gas-local.
-Sample library downloaded by gas-tools, but default download path has changed from src to test/src (in gapps.config.json).
+Sample library downloaded by gapps, but default download path has changed from src to test/src (in gapps.config.json).
 
 # Useful links
 
-- [Advanced Development Process with Apps Script](http://googleappsdeveloper.blogspot.ru/2015/12/advanced-development-process-with-apps.html) - more about how to use gas-tools 
+- [Advanced Development Process with Apps Script](http://googleappsdeveloper.blogspot.ru/2015/12/advanced-development-process-with-apps.html) - more about how to use gapps utility 
 - [Executing JS Code in a Sandbox With Node's VM Module](https://60devs.com/executing-js-code-with-nodes-vm-module.html)
 
 [npm-image]: https://img.shields.io/npm/v/gas-local.svg
