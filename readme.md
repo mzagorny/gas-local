@@ -3,11 +3,11 @@
 Execute and test your google apps scripts projects locally in node.js runtime.     
 Companion for [gas tools](https://www.npmjs.com/package/node-google-apps-script)
 
-# General workflow
+# Workflow
 
 - Download your apps script project via [gas tools](https://www.npmjs.com/package/node-google-apps-script). 
 //all .gs files of your project will appear as javascript file in 'src' subfolder
-- "Require" your library as usual module in your local tests
+- "Require" your library as usual module in your local tests via gas-local
 ```javascript
 //require gas-local itself
 var gas = require('gas-local');
@@ -63,7 +63,6 @@ Don't know regarding other combinations.
 npm install gas-local --save
 ```
 
-
 # Testing
 ```
 npm test
@@ -74,7 +73,8 @@ Sample library downloaded by gas-tools, but default download path has changed fr
 
 # Useful links
 
-- More about how gas-tools works - [Advanced Development Process with Apps Script](http://googleappsdeveloper.blogspot.ru/2015/12/advanced-development-process-with-apps.html) 
+- [Advanced Development Process with Apps Script](http://googleappsdeveloper.blogspot.ru/2015/12/advanced-development-process-with-apps.html) - more about how to use gas-tools 
+- [Executing JS Code in a Sandbox With Node's VM Module](https://60devs.com/executing-js-code-with-nodes-vm-module.html)
 
 
 
