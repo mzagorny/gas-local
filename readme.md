@@ -1,4 +1,6 @@
-# Description
+# gas-local
+
+[![NPM Version][npm-image]][npm-url]
 
 Execute and test your google apps scripts projects locally in node.js runtime.     
 Companion for [gas tools](https://www.npmjs.com/package/node-google-apps-script)
@@ -53,7 +55,7 @@ gas-local allows to use google apps script project "as is" without any rewriting
 > if node debugger hangs on start, remove all breakpoints within google library and restart debugger. 
 > Set library breakpoints at run-time after step-in to library.        
 
-This behavior actually is similar to google cloud debugger, where library breakpoints work only after step-in.  
+This behavior actually is similar to google cloud debugger, where library breakpoints work only after debugger step-in.  
 
 My environment: Windows 7/10 x64, vscode.   
 Don't know regarding other combinations.
@@ -76,6 +78,7 @@ Sample library downloaded by gas-tools, but default download path has changed fr
 - [Advanced Development Process with Apps Script](http://googleappsdeveloper.blogspot.ru/2015/12/advanced-development-process-with-apps.html) - more about how to use gas-tools 
 - [Executing JS Code in a Sandbox With Node's VM Module](https://60devs.com/executing-js-code-with-nodes-vm-module.html)
 
-
+[npm-image]: https://img.shields.io/npm/v/gas-local.svg
+[npm-url]: https://npmjs.org/package/gas-local
 
 
