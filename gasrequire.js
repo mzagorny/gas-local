@@ -6,7 +6,7 @@ var util = require('util');
 var debug = util.debuglog('gas-local:require');
 
 /**
- * 
+ * Loads all js files from folder as single module  
  * 
  * @param {string} folderPath to folder with downloaded app scripts
  * @param {object} globalObject to pass to module. globalMock will be passed if not specified
@@ -33,6 +33,7 @@ function gasrequire(folderPath, globalObject) {
     debug('loading file: %s...', fpath);
 
     var code = fs.readFileSync(fpath);
+    //all magic is here! 
     vm.runInContext(code, ctx, fpath);
   }
 
