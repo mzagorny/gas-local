@@ -48,6 +48,16 @@ All content of these files (functions and variable) is public. This incompatible
 
 gas-local allows to use google apps script project "as is" without any rewriting to use in node. All scripts from google apps script project are loaded to separate single context and doesn't mix with global context.
 
+# Known debugging issue
+
+> if node debugger hangs on start, remove all breakpoints within google library and restart debugger. 
+> Set library breakpoints at run-time after step-in to library.        
+
+This behavior actually is similar to google cloud debugger, where library breakpoints work only after step-in.  
+
+My environment: Windows 7/10 x64, vscode.   
+Don't know regarding other combinations.
+
 # Installation
 ```
 npm install gas-local --save
