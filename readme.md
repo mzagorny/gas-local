@@ -77,7 +77,8 @@ Sample library downloaded by gapps, but default download path has changed from s
 # Useful links
 
 - [Advanced Development Process with Apps Script](http://googleappsdeveloper.blogspot.ru/2015/12/advanced-development-process-with-apps.html) - more about how to use gapps utility 
-- [Executing JS Code in a Sandbox With Node's VM Module](https://60devs.com/executing-js-code-with-nodes-vm-module.html)
+- [Executing JS Code in a Sandbox With Node's VM Module](https://60devs.com/executing-js-code-with-nodes-vm-module.html) - great reading about contexts and sandboxes
+- [Scripting a Node.js App](http://www.hacksparrow.com/scripting-a-node-js-app.html) - node scripting in action and how to handle script errors 
 
 [npm-image]: https://img.shields.io/npm/v/gas-local.svg
 [npm-url]: https://npmjs.org/package/gas-local

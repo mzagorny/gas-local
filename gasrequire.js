@@ -33,8 +33,15 @@ function gasrequire(folderPath, globalObject) {
     debug('loading file: %s...', fpath);
 
     var code = fs.readFileSync(fpath);
-    //all magic is here! 
-    vm.runInContext(code, ctx, fpath);
+
+    try {
+      //without try/catch envelop node runtime hangs if any error in loaded script (e.g. syntax or RefeenceError)      
+        vm.runInContext(code, ctx, fpath);
+    }
+    catch (error) {
+      //rethrow the error and stop loading other files.
+      throw error;
+    }
   }
 
   return ctx;
