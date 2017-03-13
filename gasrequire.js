@@ -10,20 +10,24 @@ var debug = util.debuglog('gas-local:require');
  * 
  * @param {string} folderPath to folder with downloaded app scripts
  * @param {object} globalObject to pass to module. globalMock will be passed if not specified
+ * @param {object} options that give more control over behavour. options.filter can be to determine which files are loaded into the context
  * @returns module
  */
-function gasrequire(folderPath, globalObject) {
+function gasrequire(folderPath, globalObject, options) {
   if (!globalObject) {
     debug('no globalObject passed. use default mock');
     globalObject = require('./globalmock-default');
   }
 
-  debug('loading from folder: %s...', folderPath)
-  var files = fs.readdirSync(folderPath);
-  var gsFiles = files.filter(function (f) {
+  options = typeof options === 'object' ? options : {};
+  var filterFunc  = options.filter ? options.filter : function(f) {
     var ext = path.extname(f);
     return ext == '.js';
-  });
+  };
+
+  debug('loading from folder: %s...', folderPath)
+  var files = fs.readdirSync(folderPath);
+  var gsFiles = files.filter(filterFunc);
 
   var ctx = vm.createContext(globalObject);
 
