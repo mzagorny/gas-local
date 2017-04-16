@@ -74,6 +74,28 @@ npm test
 Test files located in test folder. Tests build around [sample](https://script.google.com/d/1rbgTsrQ2tYUWtKsc6rwke2OMbs2ElmAhi86uf38YM_efLUIRU2MjWSFq/edit?usp=sharing) google app script module and ensure that this app script library is loaded correctly by gas-local.
 Sample library downloaded by gapps, but default download path has changed from src to test/src (in gapps.config.json).
 
+# Work with REPL tool: locus
+Install:
+```
+npm install locus --save 
+```
+Config:
+```javascript
+require('locus'); 
+var customMock = { 
+    MailApp: { getRemainingDailyQuota: function () { return 50; } },
+     __proto__: defMock,
+     locus: locus,                                                                                                
+     global: global,                                                                                              
+     __locus_modules__: __locus_modules__,                                                                        
+     __locus_running__: __locus_running__ 
+  };
+```
+Usage:
+Drop the line anywhere in your code:
+```javascript
+eval(locus); 
+```
 # Useful links
 
 - [Advanced Development Process with Apps Script](http://googleappsdeveloper.blogspot.ru/2015/12/advanced-development-process-with-apps.html) - more about how to use gapps utility 
