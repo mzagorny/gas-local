@@ -26,14 +26,13 @@ function gasrequire(folderPath, globalObject, options) {
   };
 
   debug('loading from folder: %s...', folderPath)
-  var files = fs.readdirSync(folderPath);
+  var files = walk(folderPath);
   var gsFiles = files.filter(filterFunc);
 
   var ctx = vm.createContext(globalObject);
 
   for (var i = 0; i < gsFiles.length; i++) {
-    var fname = gsFiles[i];
-    var fpath = path.join(folderPath, fname);
+    var fpath = gsFiles[i];
     debug('loading file: %s...', fpath);
 
     var code = fs.readFileSync(fpath);
@@ -51,6 +50,16 @@ function gasrequire(folderPath, globalObject, options) {
   return ctx;
 }
 
-
+function walk(dir) {
+    var results = []
+    var list = fs.readdirSync(dir)
+    list.forEach(function(file) {
+        file = dir + '/' + file
+        var stat = fs.statSync(file)
+        if (stat && stat.isDirectory()) results = results.concat(walk(file))
+        else results.push(file)
+    })
+    return results
+}
 
 module.exports = gasrequire;
