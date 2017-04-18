@@ -24,6 +24,10 @@ describe('Library loading', function () {
     assert(m.x == 5);
   })
 
+  it('variable in subfolder initialize correct', function () {
+    assert(m.y == 5);
+  })
+
   it('function updates variable from other file', function () {
     m.setX(7);
     assert(m.x == 7);
