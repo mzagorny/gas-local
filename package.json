@@ -4,7 +4,11 @@
   "description": "Execute and test your google apps script projects locally in node.js runtime",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "login": "clasp login",
+    "push": "clasp push",
+    "pull": "clasp pull",
+    "clone": "clasp clone"      
   },
   "keywords": [
     "gas",
