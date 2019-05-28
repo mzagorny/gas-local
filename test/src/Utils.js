@@ -17,7 +17,6 @@ var Utils = {
 /**
  * triggers to run in cloud
  */
-
 function _run_logCurrentDateTime() {
   Utils.logCurrentDateTime();
 }
