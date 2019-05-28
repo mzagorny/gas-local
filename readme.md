@@ -1,17 +1,17 @@
 # gas-local
 
-[![NPM Version][npm-image]][npm-url]
+[![build status](https://badgen.net/travis/mzagorny/gas-local/master)](https://travis-ci.com/mzagorny/gas-local) [![install size](https://badgen.net/packagephobia/install/gas-local)](https://packagephobia.now.sh/result?p=gas-local) [![npm package version](https://badgen.net/npm/v/gas-local)](https://npm.im/gas-local) [![github license](https://badgen.net/github/license/mzagorny/gas-local)](https://github.com/mzagorny/gas-local/blob/master/LICENSE) [![js semistandard style](https://badgen.net/badge/code%20style/semistandard/pink)](https://github.com/Flet/semistandard)
 
 Execute and test your [google apps script](https://developers.google.com/apps-script/) projects locally in node.js runtime.
 
-Companion to [google clasp](https://developers.google.com/apps-script/guides/clasp)
+Companion to [google clasp](https://developers.google.com/apps-script/guides/clasp).
 
 # Workflow
 
 - Download your google apps script project using clasp. 
-//all .gs files of your project will appear as javascript files in your folder
-- Adjust local subfolder folder in .clasp.json, e.g. "src"
-- "Require" your library as usual module in your local tests via gas-local
+(all `.gs` files of your project will appear as javascript files in your folder)
+- Adjust local subfolder folder in `.clasp.json`, e.g. `src`
+- "Require" your library as usual module in your local tests via `gas-local`
 ```javascript
 // require gas-local itself
 var gas = require('gas-local');
@@ -69,8 +69,3 @@ Sample library downloaded by gapps, but default download path has changed from s
 - [Advanced Development Process with Apps Script](http://googleappsdeveloper.blogspot.ru/2015/12/advanced-development-process-with-apps.html) - more about how to use gapps utility 
 - [Executing JS Code in a Sandbox With Node's VM Module](https://60devs.com/executing-js-code-with-nodes-vm-module.html) - great reading about contexts and sandboxes
 - [Scripting a Node.js App](http://www.hacksparrow.com/scripting-a-node-js-app.html) - node scripting in action and how to handle script errors 
-
-[npm-image]: https://img.shields.io/npm/v/gas-local.svg
-[npm-url]: https://npmjs.org/package/gas-local
-
-
