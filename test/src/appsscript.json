@@ -1,6 +1,5 @@
 {
   "timeZone": "Africa/Nairobi",
-  "dependencies": {
-  },
+  "dependencies": {},
   "exceptionLogging": "STACKDRIVER"
 }

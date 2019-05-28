@@ -1,5 +1,5 @@
 /**
- * Set variable x 
+ * Set variable x
  * @param {any} v value to set
  */
 function setX(v) {

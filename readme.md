@@ -13,11 +13,11 @@ Companion to [google clasp](https://developers.google.com/apps-script/guides/cla
 - Adjust local subfolder folder in .clasp.json, e.g. "src"
 - "Require" your library as usual module in your local tests via gas-local
 ```javascript
-//require gas-local itself
+// require gas-local itself
 var gas = require('gas-local');
-//require your downloaded google apps script library from src subfolder as normal module   
+// require your downloaded google apps script library from src subfolder as normal module   
 var glib = gas.require('./src');
-//call some function from your app script library 
+// call some function from your app script library 
 glib.somefunction();
 ```
 - Develop and test your google apps script project locally
@@ -30,17 +30,16 @@ Below is example how to mock MailApp.getRemainingDailyQuota function.
 
 ```javascript
 var gas = require('gas-local');
-//pick default mock object
+// pick default mock object
 var defMock = gas.globalMockDefault;
-//Mock MailApp by extending default mock object
+// Mock MailApp by extending default mock object
 var customMock = { 
-    MailApp: { getRemainingDailyQuota: function () { return 50; } },
-     __proto__: defMock 
-  };
-//pass it to require
+  MailApp: { getRemainingDailyQuota: function () { return 50; } },
+  __proto__: defMock 
+};
+// pass it to require
 var glib = gas.require('./src', customMock);
-
-//call some function from your app script library working with MailApp 
+// call some function from your app script library working with MailApp 
 glib.sendMails();
 ```
 
