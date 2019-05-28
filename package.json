@@ -3,6 +3,11 @@
   "version": "1.3.1",
   "description": "Execute and test your google apps script projects locally in node.js runtime",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "gasrequire.js",
+    "globalmock-default.js"
+  ],
   "scripts": {
     "test": "mocha --reporter spec",
     "lint": "eslint .",
