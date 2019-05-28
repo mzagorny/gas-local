@@ -1,9 +1,4 @@
+'use strict';
 
-module.exports = {
-  require:require('./gasrequire'),
-  globalMockDefault:require('./globalmock-default')
-};
-
-
-
-
+exports.require = require('./gasrequire');
+exports.globalMockDefault = require('./globalmock-default');

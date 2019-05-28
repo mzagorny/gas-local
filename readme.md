@@ -1,63 +1,71 @@
 # gas-local
 
-[![NPM Version][npm-image]][npm-url]
+[![build status](https://badgen.net/travis/mzagorny/gas-local/master)](https://travis-ci.com/mzagorny/gas-local) [![install size](https://badgen.net/packagephobia/install/gas-local)](https://packagephobia.now.sh/result?p=gas-local) [![npm package version](https://badgen.net/npm/v/gas-local)](https://npm.im/gas-local) [![github license](https://badgen.net/github/license/mzagorny/gas-local)](https://github.com/mzagorny/gas-local/blob/master/LICENSE) [![js semistandard style](https://badgen.net/badge/code%20style/semistandard/pink)](https://github.com/Flet/semistandard)
 
 Execute and test your [google apps script](https://developers.google.com/apps-script/) projects locally in node.js runtime.
 
-Companion to [google clasp](https://developers.google.com/apps-script/guides/clasp)
+Companion to [google clasp](https://developers.google.com/apps-script/guides/clasp).
 
 # Workflow
 
-- Download your google apps script project using clasp. 
-//all .gs files of your project will appear as javascript files in your folder
-- Adjust local subfolder folder in .clasp.json, e.g. "src"
-- "Require" your library as usual module in your local tests via gas-local
+- Download your google apps script project using clasp.
+  (all `.gs` files of your project will appear as javascript files in your folder)
+- Adjust local subfolder folder in `.clasp.json`, e.g. `src`
+- "Require" your library as usual module in your local tests via `gas-local`
+
 ```javascript
-//require gas-local itself
+// Require `gas-local` itself
 var gas = require('gas-local');
-//require your downloaded google apps script library from src subfolder as normal module   
+// Require your downloaded google apps script library from `src` subfolder as normal module
 var glib = gas.require('./src');
-//call some function from your app script library 
+// Call some function from your app script library
 glib.somefunction();
 ```
+
 - Develop and test your google apps script project locally
-- Upload changes back to google using gapps. 
+- Upload changes back to google using gapps.
 
 # How to mock google services
+
 gas-local already mocks parts of Logger and Utilities by default (see globalmock-default.js).
-But you also can provide mocks for other google services for your tests. 
-Below is example how to mock MailApp.getRemainingDailyQuota function.  
+But you also can provide mocks for other google services for your tests.
+Below is example how to mock MailApp.getRemainingDailyQuota function.
 
 ```javascript
 var gas = require('gas-local');
-//pick default mock object
-var defMock = gas.globalMockDefault;
-//Mock MailApp by extending default mock object
-var customMock = { 
-    MailApp: { getRemainingDailyQuota: function () { return 50; } },
-     __proto__: defMock 
-  };
-//pass it to require
-var glib = gas.require('./src', customMock);
 
-//call some function from your app script library working with MailApp 
+// Pick default mock object
+var defMock = gas.globalMockDefault;
+// Mock `MailApp` by extending default mock object
+var customMock = Object.create(defMock);
+customMock.MailApp = {
+  getRemainingDailyQuota: function () {
+    return 50;
+  }
+};
+
+// Pass it to require
+var glib = gas.require('./src', customMock);
+// Call some function from your app script library working with `MailApp`
 glib.sendMails();
 ```
 
 # Explanation
 
-There is a difference what is module in google apps script and what is module in node. 
+There is a difference what is module in google apps script and what is module in node.
 Google apps script module (or library) consist of several javascript files which shares common context in runtime.  
 All content of these files (functions and variable) is public. This incompatible with node.js approach where module is strictly single file and content is private by default. You need to use module.exports construct to make something visible.
 
 gas-local allows to use google apps script project "as is" without any rewriting to use in node. All scripts from google apps script project are loaded to separate single context and doesn't mix with global context.
 
 # Installation
+
 ```
 npm install gas-local --save
 ```
 
 # Testing
+
 ```
 npm test
 ```
@@ -67,11 +75,6 @@ Sample library downloaded by gapps, but default download path has changed from s
 
 # Useful links
 
-- [Advanced Development Process with Apps Script](http://googleappsdeveloper.blogspot.ru/2015/12/advanced-development-process-with-apps.html) - more about how to use gapps utility 
+- [Advanced Development Process with Apps Script](http://googleappsdeveloper.blogspot.ru/2015/12/advanced-development-process-with-apps.html) - more about how to use gapps utility
 - [Executing JS Code in a Sandbox With Node's VM Module](https://60devs.com/executing-js-code-with-nodes-vm-module.html) - great reading about contexts and sandboxes
-- [Scripting a Node.js App](http://www.hacksparrow.com/scripting-a-node-js-app.html) - node scripting in action and how to handle script errors 
-
-[npm-image]: https://img.shields.io/npm/v/gas-local.svg
-[npm-url]: https://npmjs.org/package/gas-local
-
-
+- [Scripting a Node.js App](http://www.hacksparrow.com/scripting-a-node-js-app.html) - node scripting in action and how to handle script errors
