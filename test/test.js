@@ -25,11 +25,11 @@ describe('Library loading', function () {
     assert(m.hasOwnProperty('Utils'));
   });
 
-  it('variable initialize correct', function () {
+  it('variable initialization correct', function () {
     assert(m.x === 5);
   });
 
-  it('variable in subfolder initialize correct', function () {
+  it('variable in subfolder initialization correct', function () {
     assert(m.y === 5);
   });
 
@@ -41,7 +41,7 @@ describe('Library loading', function () {
 
 describe('Default mock of services', function () {
   var m = gas.require(scriptsDir);
-  it('logger is mocked', function () {
+  it('`Logger` is mocked', function () {
     // Contains call to Logger. if no exception then Logger is mocked as it should. test passes
     m.Utils.logCurrentDateTime();
   });
@@ -51,18 +51,23 @@ describe('Custom mock of services', function () {
   // default mock object
   var defMock = gas.globalMockDefault;
   // extend default mock object
-  var customMock = { MailApp: { getRemainingDailyQuota: function () { return 50; } }, __proto__: defMock };
+  var customMock = Object.create(defMock);
+  customMock.MailApp = {
+    getRemainingDailyQuota: function () {
+      return 50;
+    }
+  };
   // pass it to require
   var m = gas.require(scriptsDir, customMock);
 
-  it('mock additional service - MailApp', function () {
+  it('mock additional service: `MailApp`', function () {
     // Contains call to MailApp. if no exception then MailApp is mocked as it should.
     var q = m.Utils.getRemainingEmailQuota();
     // but assert returned value also for 100% sure :)
     assert(q === 50);
   });
 
-  it('default Logger is mocked also', function () {
+  it('default `Logger` is also mocked', function () {
     // Contains call to Logger. if no exception then Logger is mocked as it should. test passes
     m.Utils.logCurrentDateTime();
   });
