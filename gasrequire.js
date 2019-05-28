@@ -29,7 +29,7 @@ function gasrequire(folderPath, globalObject, options) {
   var scripts = walk(folderPath, options.filter);
   scripts.forEach(function (scriptPath) {
     debug('loading file: %s...', scriptPath);
-    var code = fs.readFileSync(scriptPath);
+    var code = fs.readFileSync(scriptPath, 'utf-8');
 
     try {
       // NOTE: Without try/catch envelope node runtime hangs on any error
