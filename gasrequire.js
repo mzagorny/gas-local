@@ -1,67 +1,67 @@
 'use strict';
 
+var debug = require('util').debuglog('gas-local:require');
 var fs = require('fs');
-var vm = require('vm');
 var path = require('path');
-
-var util = require('util');
-var debug = util.debuglog('gas-local:require');
+var vm = require('vm');
 
 /**
  * Loads all js files from folder as single module
  *
- * @param {string} folderPath to folder with downloaded app scripts
- * @param {object} globalObject to pass to module. globalMock will be passed if not specified
- * @param {object} options that give more control over behavour. options.filter can be to determine which files are loaded into the context
- * @returns module
+ * @param {string} folderPath path to folder with downloaded app scripts
+ * @param {object} [globalObject] global context to pass to module; `globalMock` will be used if not specified
+ * @param {object} [options] options to control execution behaviour
+ * @param {function} [options.filter] custom file filter for controlling which files get loaded inside execution context
+ * @returns {import('vm').Context} script execution context;
  */
 function gasrequire(folderPath, globalObject, options) {
+  options = typeof options === 'object' ? options : {};
+  options.filter = options.filter || defaultFileFilter;
+
   if (!globalObject) {
-    debug('no globalObject passed. use default mock');
+    debug('no `globalObject` passed. use default mock');
     globalObject = require('./globalmock-default');
   }
 
-  options = typeof options === 'object' ? options : {};
-  var filterFunc = options.filter ? options.filter : function (f) {
-    var name = path.basename(f);
-    var ext = path.extname(f);
-    return ext === '.js' && name[0] !== '.';
-  };
-
-  debug('loading from folder: %s...', folderPath);
-  var files = walk(folderPath);
-  var gsFiles = files.filter(filterFunc);
-
   var ctx = vm.createContext(globalObject);
 
-  for (var i = 0; i < gsFiles.length; i++) {
-    var fpath = gsFiles[i];
-    debug('loading file: %s...', fpath);
-
-    var code = fs.readFileSync(fpath);
+  debug('loading from folder: %s...', folderPath);
+  var scripts = walk(folderPath, options.filter);
+  scripts.forEach(function (scriptPath) {
+    debug('loading file: %s...', scriptPath);
+    var code = fs.readFileSync(scriptPath);
 
     try {
-      // without try/catch envelop node runtime hangs if any error in loaded script (e.g. syntax or ReferenceError)
-      vm.runInContext(code, ctx, fpath);
+      // NOTE: Without try/catch envelope node runtime hangs on any error
+      //       inside loaded script (e.g. syntax or ReferenceError)
+      vm.runInContext(code, ctx, scriptPath);
     } catch (error) {
-      // rethrow the error and stop loading other files.
+      // Rethrow the error and stop loading other files.
       throw error;
     }
-  }
+  });
 
   return ctx;
 }
 
-function walk(dir) {
+function walk(dir, filter) {
   var results = [];
-  var list = fs.readdirSync(dir);
-  list.forEach(function (file) {
-    file = dir + '/' + file;
-    var stat = fs.statSync(file);
-    if (stat && stat.isDirectory()) results = results.concat(walk(file));
-    else results.push(file);
+  fs.readdirSync(dir).forEach(function (file) {
+    var filepath = path.join(dir, file);
+    var stat = fs.statSync(filepath);
+    if (stat && stat.isDirectory()) {
+      results = results.concat(walk(filepath, filter));
+      return;
+    }
+    if (filter(filepath)) results.push(filepath);
   });
   return results;
 }
 
 module.exports = gasrequire;
+
+function defaultFileFilter(filepath) {
+  var name = path.basename(filepath);
+  var ext = path.extname(filepath);
+  return ext === '.js' && name[0] !== '.';
+}

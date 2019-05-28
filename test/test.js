@@ -3,12 +3,16 @@
 /* eslint-env mocha */
 
 var assert = require('assert');
-var gas = require('.././index.js');
+var gas = require('..');
+var path = require('path');
+
+var scriptsDir = path.join(__dirname, './src');
+
 // disable log to console for clean test output
 gas.globalMockDefault.Logger.enabled = false;
 
 describe('Library loading', function () {
-  var m = gas.require('./test/src');
+  var m = gas.require(scriptsDir);
 
   it('content is not loaded to global', function () {
     assert(typeof x === 'undefined');
@@ -36,7 +40,7 @@ describe('Library loading', function () {
 });
 
 describe('Default mock of services', function () {
-  var m = gas.require('./test/src');
+  var m = gas.require(scriptsDir);
   it('logger is mocked', function () {
     // Contains call to Logger. if no exception then Logger is mocked as it should. test passes
     m.Utils.logCurrentDateTime();
@@ -49,7 +53,7 @@ describe('Custom mock of services', function () {
   // extend default mock object
   var customMock = { MailApp: { getRemainingDailyQuota: function () { return 50; } }, __proto__: defMock };
   // pass it to require
-  var m = gas.require('./test/src', customMock);
+  var m = gas.require(scriptsDir, customMock);
 
   it('mock additional service - MailApp', function () {
     // Contains call to MailApp. if no exception then MailApp is mocked as it should.
