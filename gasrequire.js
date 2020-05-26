@@ -22,7 +22,7 @@ function gasrequire(folderPath, globalObject, options) {
   options = typeof options === 'object' ? options : {};
   var filterFunc  = options.filter ? options.filter : function(f) {
     var ext = path.extname(f);
-    return ext == '.js';
+    return ext == '.js' || '.ts' ;
   };
 
   debug('loading from folder: %s...', folderPath)
